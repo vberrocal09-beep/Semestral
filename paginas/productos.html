@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Productos | Distribuciones Logística, S.A.</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <nav class="menu" aria-label="Módulos">
+    <a href="../index.html" aria-label="Inicio">
+      <i class="fa-solid fa-house" aria-hidden="true"></i><span>Inicio</span>
+    </a>
+    <a href="productos.html" class="activa" aria-label="Productos" aria-current="page">
+      <i class="fa-solid fa-box" aria-hidden="true"></i><span>Productos</span>
+    </a>
+    <a href="proveedores.html" aria-label="Proveedores">
+      <i class="fa-solid fa-building-user" aria-hidden="true"></i><span>Proveedores</span>
+    </a>
+    <a href="clientes.html" aria-label="Clientes">
+      <i class="fa-solid fa-users" aria-hidden="true"></i><span>Clientes</span>
+    </a>
+    <a href="entradas.html" aria-label="Entradas">
+      <i class="fa-solid fa-plus" aria-hidden="true"></i><span>Entradas</span>
+    </a>
+    <a href="despachos.html" aria-label="Despachos">
+      <i class="fa-solid fa-minus" aria-hidden="true"></i><span>Despachos</span>
+    </a>
+    <a href="ajustes.html" aria-label="Ajustes">
+      <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><span>Ajustes</span>
+    </a>
+    <a href="reportes.html" aria-label="Reportes">
+      <i class="fa-solid fa-chart-column" aria-hidden="true"></i><span>Reportes</span>
+    </a>
+  </nav>
+
+  <main class="pagina-productos">
+    <form id="formulario" class="panel formulario">
+      <h2 id="titulo-form">Nuevo producto</h2>
+
+      <label>
+        Código
+        <input id="codigo" required maxlength="20" placeholder="P001">
+      </label>
+
+      <label>
+        Descripción
+        <input id="descripcion" required maxlength="150">
+      </label>
+
+      <label>
+        Marca
+        <input id="marca" maxlength="60">
+      </label>
+
+      <label>
+        Unidad
+        <input id="unidad" required maxlength="20" value="Unidad">
+      </label>
+
+      <div class="fila">
+        <label>
+          Costo
+          <input id="costo" type="number" step="0.01" min="0">
+        </label>
+
+        <label>
+          Precio
+          <input id="precio" type="number" step="0.01" min="0">
+        </label>
+      </div>
+
+      <label>
+        ITBMS
+        <select id="itbms">
+          <option value="0">No</option>
+          <option value="1">Sí</option>
+        </select>
+      </label>
+
+      <label>
+        Comentario
+        <textarea id="comentario" rows="3" maxlength="255"></textarea>
+      </label>
+
+      <div class="fila">
+        <button type="submit" class="principal-btn">Guardar</button>
+        <button type="button" class="cancelar" id="cancelar">Cancelar</button>
+      </div>
+    </form>
+
+    <section class="productos-lista">
+      <header>
+        <h1>Productos</h1>
+        <p>Registre los productos antes de crear movimientos.</p>
+      </header>
+
+      <p id="mensaje" class="mensaje" role="status"></p>
+
+      <div class="panel tabla-scroll">
+        <h2>Lista de productos</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Marca</th>
+              <th>Unidad</th>
+              <th>ITBMS</th>
+              <th>Comentario</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tabla"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/productos.js"></script>
+</body>
+</html>
