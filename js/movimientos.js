@@ -58,7 +58,7 @@ function cargarLista() {
       ? lista.map(function (m) {
           return '<tr><td>' + limpiar(m.fecha) + '</td><td>' + ETIQUETA[m.tipo] + '</td><td>' + limpiar(m.producto) + '</td>' +
             '<td>' + limpiar(m.cantidad) + '</td><td>' + limpiar(m.tercero) + '</td><td>' + limpiar(m.comentario) + '</td>' +
-            '<td class="acciones"><button data-accion="editar" data-id="' + m.id_movimiento + '">Editar</button> ' +
+            '<td class="acciones"><button data-accion="editar" data-id="' + m.id_movimiento + '" class="editar">Editar</button> ' +
             '<button data-accion="eliminar" data-id="' + m.id_movimiento + '" class="peligro">Eliminar</button></td></tr>';
         }).join('')
       : '<tr><td colspan="7" class="vacio">Aún no hay registros. Complete el formulario para crear el primero.</td></tr>';
