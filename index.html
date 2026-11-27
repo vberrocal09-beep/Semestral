@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Distribuciones Logística, S.A. | Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <nav class="menu" aria-label="Módulos">
+    <a href="index.html" class="activa" aria-label="Inicio" aria-current="page">
+      <i class="fa-solid fa-house" aria-hidden="true"></i><span>Inicio</span>
+    </a>
+    <a href="paginas/productos.html" aria-label="Productos">
+      <i class="fa-solid fa-box" aria-hidden="true"></i><span>Productos</span>
+    </a>
+    <a href="paginas/proveedores.html" aria-label="Proveedores">
+      <i class="fa-solid fa-building-user" aria-hidden="true"></i><span>Proveedores</span>
+    </a>
+    <a href="paginas/clientes.html" aria-label="Clientes">
+      <i class="fa-solid fa-users" aria-hidden="true"></i><span>Clientes</span>
+    </a>
+    <a href="paginas/entradas.html" aria-label="Entradas">
+      <i class="fa-solid fa-plus" aria-hidden="true"></i><span>Entradas</span>
+    </a>
+    <a href="paginas/despachos.html" aria-label="Despachos">
+      <i class="fa-solid fa-minus" aria-hidden="true"></i><span>Despachos</span>
+    </a>
+    <a href="paginas/ajustes.html" aria-label="Ajustes">
+      <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><span>Ajustes</span>
+    </a>
+    <a href="paginas/reportes.html" aria-label="Reportes">
+      <i class="fa-solid fa-chart-column" aria-hidden="true"></i><span>Reportes</span>
+    </a>
+  </nav>
+
+  <main>
+    <header>
+      <h1>Distribuciones<br>Logística, S.A.</h1>
+      <p id="hoy"></p>
+    </header>
+
+    <section class="resumen">
+      <div class="principal">
+        <p>Unidades en bodega</p>
+        <div class="numero" id="existencia">0</div>
+      </div>
+
+      <div class="lista">
+        <div>
+          <span>Productos registrados</span>
+          <span class="numero" id="productos">0</span>
+        </div>
+        <div>
+          <span>Entradas este mes</span>
+          <span class="numero entra" id="entradas">0</span>
+        </div>
+        <div>
+          <span>Salidas este mes</span>
+          <span class="numero sale" id="salidas">0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="paneles">
+      <div class="panel">
+        <h2>Poco stock</h2>
+        <ul class="stock" id="bajo"></ul>
+      </div>
+
+      <div class="panel">
+        <h2>Últimos movimientos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Producto</th>
+              <th>Cant.</th>
+              <th>Comentario</th>
+            </tr>
+          </thead>
+          <tbody id="ultimos"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
