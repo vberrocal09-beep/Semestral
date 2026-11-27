@@ -1,10 +1,16 @@
 <?php
 
+//Datos de entrada, pueden ser cambiados más tarde
 $host = "sql313.infinityfree.com";
 $bd = "if0_43540368_INV_MANAGE";
 $usuario = "if0_43540368";
 $password = "RzsJrnxEJ9yB2A";
 
+
+/*
+Bloque try-catch para intentar conexión con la BD 
+y en caso de fallar devolver un error
+*/
 try {
 
     $conexion = new PDO(

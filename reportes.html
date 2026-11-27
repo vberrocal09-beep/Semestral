@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entradas de mercancía | Distribuciones Logística, S.A.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body data-tipo="REPORTE">
+
+  <!-- MENU (la clase "activa" marca la pagina actual) -->
+  <nav class="menu" aria-label="Módulos">
+    <a href="../index.html">🏠<span>Inicio</span></a>
+    <a href="productos.html">📦<span>Productos</span></a>
+    <a href="proveedores.html">🚚<span>Proveedores</span></a>
+    <a href="clientes.html">👥<span>Clientes</span></a>
+    <a href="entradas.html" class="activa">⬇️<span>Entradas</span></a>
+    <a href="despachos.html">⬆️<span>Despachos</span></a>
+    <a href="ajustes.html">⚖️<span>Ajustes</span></a>
+    <a href="reportes.html">📊<span>Reportes</span></a>
+  </nav>
+
+  <main>
+    <header><h1>Reportes</h1><p>Realice consultas de productos</p></header>
+    <p id="mensaje" class="mensaje" role="status"></p>
+
+    <section class="crud">
+      <!--  -->
+      <form id="formulario" class="panel">
+        <h2 id="titulo-form">Nuevo registro</h2>
+
+        <!--Busqueda de productos-->
+        <label>Producto <select id="codigo" required></select></label>
+
+        <!--Campos de fechas de inicio a final-->
+        <div id="grupo-fechas">
+            <label>
+                Proveedor <select id="id_proveedor"></select>
+            </label>
+        </div>
+
+        <!--
+        Tabla de salida que muestra los resultados
+        de los datos introducidos para el reporte
+        -->
+        <div id="grupo-salidaRep">
+            <table border="1px">
+                <tr>
+                    <td>Fecha</td>
+                    <td>Movimiento</td>
+                    <td>Producto</td>
+                    <td>Cantidad</td>
+                    <td>Proveedor</td>
+                    <td>Total</td>
+                </tr>
+
+                <!--Tabla provisional, aquí van los datos-->
+                <tr>
+                    <td>h</td>
+                    <td>o</td>
+                    <td>r</td>
+                    <td>u</td>
+                    <td>s</td>
+                    <td>:)</td>
+                </tr>
+                
+            </table>
+        </div>
+
+        <br>
+        <br>
+        
+        <!--Botones de exportar y limpiar campos-->
+        <div class="fila">
+          <button type="submit" class="principal-btn" id="export">
+            Exportar a CSV
+        </button>
+
+          <button type="button" id="limpiar">Limpiar</button>
+        </div>
+      </form>
+
+      <!-- TABLA -->
+      <div class="panel">
+        <h2>Historial</h2>
+        <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Fecha</th><th>Movimiento</th><th>Producto</th><th>Cant.</th><th>Proveedor / Cliente</th><th>Comentario</th><th></th></tr></thead>
+            <tbody id="tabla"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="../js/movimientos.js"></script>
+
+</body>
+</html>
