@@ -4,59 +4,106 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Entradas de mercancía | Distribuciones Logística, S.A.</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body data-tipo="ENTRADA">
-  <!-- MENU (la clase "activa" marca la pagina actual) -->
+
   <nav class="menu" aria-label="Módulos">
-    <a href="../index.html">🏠<span>Inicio</span></a>
-    <a href="productos.html">📦<span>Productos</span></a>
-    <a href="proveedores.html">🚚<span>Proveedores</span></a>
-    <a href="clientes.html">👥<span>Clientes</span></a>
-    <a href="entradas.html" class="activa">⬇️<span>Entradas</span></a>
-    <a href="despachos.html">⬆️<span>Despachos</span></a>
-    <a href="ajustes.html">⚖️<span>Ajustes</span></a>
-    <a href="reportes.html">📊<span>Reportes</span></a>
+    <a href="../index.html" aria-label="Inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a>
+    <a href="productos.html" aria-label="Productos"><i class="fa-solid fa-box"></i><span>Productos</span></a>
+    <a href="proveedores.html" aria-label="Proveedores"><i class="fa-solid fa-building-user"></i><span>Proveedores</span></a>
+    <a href="clientes.html" aria-label="Clientes"><i class="fa-solid fa-users"></i><span>Clientes</span></a>
+    <a href="entradas.html" class="activa" aria-label="Entradas" aria-current="page"><i class="fa-solid fa-plus"></i><span>Entradas</span></a>
+    <a href="despachos.html" aria-label="Despachos"><i class="fa-solid fa-minus"></i><span>Despachos</span></a>
+    <a href="ajustes.html" aria-label="Ajustes"><i class="fa-solid fa-scale-balanced"></i><span>Ajustes</span></a>
+    <a href="reportes.html" aria-label="Reportes"><i class="fa-solid fa-chart-column"></i><span>Reportes</span></a>
   </nav>
 
-  <main>
-    <header><h1>Entradas de mercancía</h1><p>Registre la mercancía que llega de un proveedor. Suma al inventario.</p></header>
-    <p id="mensaje" class="mensaje" role="status"></p>
-
+  <main class="pagina-movimiento">
     <section class="crud">
-      <!-- FORMULARIO: los grupos con "hidden" los muestra u oculta movimientos.js segun la pantalla -->
-      <form id="formulario" class="panel">
+      <form id="formulario" class="panel formulario">
         <h2 id="titulo-form">Nuevo registro</h2>
-        <label>Producto <select id="codigo" required></select></label>
+
+        <label>Producto
+          <select id="codigo" required></select>
+        </label>
+
         <p id="existencia" class="existencia"></p>
-        <div id="grupo-proveedor"><label>Proveedor <select id="id_proveedor"></select></label></div>
-        <div id="grupo-cliente"><label>Cliente <select id="id_cliente"></select></label></div>
-        <div id="grupo-signo"><label>Tipo de ajuste
-          <select id="signo"><option value="+">Positivo (suma al inventario)</option><option value="-">Negativo (resta del inventario)</option></select></label></div>
-        <div class="fila">
-          <label>Cantidad <input id="cantidad" type="number" min="1" step="1" required></label>
-          <label>Fecha <input id="fecha" type="date" required></label>
+
+        <div id="grupo-proveedor">
+          <label>Proveedor
+            <select id="id_proveedor"></select>
+          </label>
         </div>
-        <label>Comentario <textarea id="comentario" rows="2" maxlength="255"></textarea></label>
+
+        <div id="grupo-cliente">
+          <label>Cliente
+            <select id="id_cliente"></select>
+          </label>
+        </div>
+
+        <div id="grupo-signo">
+          <label>Tipo de ajuste
+            <select id="signo">
+              <option value="+">Positivo (suma al inventario)</option>
+              <option value="-">Negativo (resta del inventario)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="fila">
+          <label>Cantidad
+            <input id="cantidad" type="number" min="1" step="1" required>
+          </label>
+          <label>Fecha
+            <input id="fecha" type="date" required>
+          </label>
+        </div>
+
+        <label>Comentario
+          <textarea id="comentario" rows="2" maxlength="255"></textarea>
+        </label>
+
         <div class="fila">
           <button type="submit" class="principal-btn">Guardar</button>
-          <button type="button" id="cancelar">Cancelar</button>
+          <button type="button" id="cancelar" class="cancelar">Cancelar</button>
         </div>
       </form>
 
-      <!-- TABLA -->
-      <div class="panel">
-        <h2>Historial</h2>
-        <div class="tabla-scroll">
-          <table>
-            <thead><tr><th>Fecha</th><th>Movimiento</th><th>Producto</th><th>Cant.</th><th>Proveedor / Cliente</th><th>Comentario</th><th></th></tr></thead>
-            <tbody id="tabla"></tbody>
-          </table>
+      <section class="lista-movimientos">
+        <header>
+          <h1>Entradas de mercancía</h1>
+          <p>Registre la mercancía que llega de un proveedor. Suma al inventario.</p>
+        </header>
+
+        <p id="mensaje" class="mensaje" role="status"></p>
+
+        <div class="panel">
+          <h2>Historial</h2>
+          <div class="tabla-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Movimiento</th>
+                  <th>Producto</th>
+                  <th>Cant.</th>
+                  <th>Proveedor / Cliente</th>
+                  <th>Comentario</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tabla"></tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      </section>
     </section>
   </main>
+
   <script src="../js/movimientos.js"></script>
 </body>
 </html>
