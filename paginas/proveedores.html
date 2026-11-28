@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proveedores | Distribuciones Logística, S.A.</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <nav class="menu" aria-label="Módulos">
+    <a href="../index.html" aria-label="Inicio">
+      <i class="fa-solid fa-house" aria-hidden="true"></i><span>Inicio</span>
+    </a>
+    <a href="productos.html" aria-label="Productos">
+      <i class="fa-solid fa-box" aria-hidden="true"></i><span>Productos</span>
+    </a>
+    <a href="proveedores.html" class="activa" aria-label="Proveedores" aria-current="page">
+      <i class="fa-solid fa-building-user" aria-hidden="true"></i><span>Proveedores</span>
+    </a>
+    <a href="clientes.html" aria-label="Clientes">
+      <i class="fa-solid fa-users" aria-hidden="true"></i><span>Clientes</span>
+    </a>
+    <a href="entradas.html" aria-label="Entradas">
+      <i class="fa-solid fa-plus" aria-hidden="true"></i><span>Entradas</span>
+    </a>
+    <a href="despachos.html" aria-label="Despachos">
+      <i class="fa-solid fa-minus" aria-hidden="true"></i><span>Despachos</span>
+    </a>
+    <a href="ajustes.html" aria-label="Ajustes">
+      <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><span>Ajustes</span>
+    </a>
+    <a href="reportes.html" aria-label="Reportes">
+      <i class="fa-solid fa-chart-column" aria-hidden="true"></i><span>Reportes</span>
+    </a>
+  </nav>
+
+  <main class="pagina-productos">
+    <form id="formulario" class="panel formulario">
+      <h2 id="titulo-form">Nuevo proveedor</h2>
+
+      <label>
+        Nombre
+        <input id="nombre" required maxlength="100">
+      </label>
+
+      <label>
+        Teléfono
+        <input id="telefono" type="tel" inputmode="numeric" maxlength="20" placeholder="6000-0000">
+      </label>
+
+      <label>
+        Correo
+        <input id="correo" type="email" maxlength="100">
+      </label>
+
+      <label>
+        Dirección
+        <input id="direccion" maxlength="200">
+      </label>
+
+      <label>
+        Comentario
+        <textarea id="comentario" rows="3" maxlength="255"></textarea>
+      </label>
+
+      <div class="fila">
+        <button type="submit" class="principal-btn">Guardar</button>
+        <button type="button" class="cancelar" id="cancelar">Cancelar</button>
+      </div>
+    </form>
+
+    <section class="productos-lista">
+      <header>
+        <h1>Proveedores</h1>
+        <p>Registre los proveedores antes de crear movimientos.</p>
+      </header>
+
+      <p id="mensaje" class="mensaje" role="status"></p>
+
+      <div class="panel tabla-scroll">
+        <h2>Lista de proveedores</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+              <th>Dirección</th>
+              <th>Comentario</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tabla"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/proveedores.js"></script>
+</body>
+</html>
