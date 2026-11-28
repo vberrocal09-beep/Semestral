@@ -70,6 +70,7 @@ function recargar() { cargarCatalogos(); cargarLista(); }   // actualiza existen
 function limpiarFormulario() {
   $('formulario').reset();
   $('fecha').value = hoy();
+  $('fecha').max = hoy();
   editandoId = null;
   $('titulo-form').textContent = 'Nuevo registro';
   mostrarExistencia();

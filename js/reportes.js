@@ -68,17 +68,44 @@ function consultar() {
 }
 
 // Cualquier cambio en un filtro vuelve a consultar
+const hoy = new Date();
+const HOY = hoy.getFullYear() + '-' + String(hoy.getMonth() + 1).padStart(2, '0') + '-' + String(hoy.getDate()).padStart(2, '0');
+$('fecha_inicio').max = HOY;
+$('fecha_hasta').max = HOY;
+
+function validarFechas() {
+  const d = $('fecha_inicio').value, h = $('fecha_hasta').value;
+  $('fecha_hasta').min = d;                       // el calendario de "hasta" no deja elegir antes de "desde"
+  $('fecha_inicio').max = h && h < HOY ? h : HOY; // y el de "desde" no deja pasar de "hasta"
+  if ((d && d > HOY) || (h && h > HOY)) {
+    $('mensaje').textContent = 'Las fechas no pueden ser posteriores a hoy.';
+    $('mensaje').className = 'mensaje mal';
+    return;
+  }
+  if (d && h && d > h) {
+    $('mensaje').textContent = 'La fecha "desde" no puede ser mayor que "hasta".';
+    $('mensaje').className = 'mensaje mal';
+    return;
+  }
+  $('mensaje').textContent = '';
+  consultar();
+}
+
+// Cualquier cambio en un filtro vuelve a consultar
 $('codigo').addEventListener('change', consultar);
-$('fecha_inicio').addEventListener('change', consultar);
-$('fecha_hasta').addEventListener('change', consultar);
+$('fecha_inicio').addEventListener('change', validarFechas);
+$('fecha_hasta').addEventListener('change', validarFechas);
 
 $('limpiar').addEventListener('click', function () {
   $('codigo').value = '';
   $('fecha_inicio').value = '';
   $('fecha_hasta').value = '';
+  $('fecha_hasta').min = '';
+  $('fecha_inicio').max = HOY;
+  $('mensaje').textContent = '';
   consultar();
 });
 
 // Al abrir la página: llenar el select y mostrar todo
 cargarProductos();
-consultar(); 
+consultar();

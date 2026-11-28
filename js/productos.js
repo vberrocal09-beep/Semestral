@@ -116,3 +116,30 @@ const expresiones = {
 
 formulario.addEventListener('submit', () => {});
 */
+
+//validaciones
+
+// validacion de codigo
+$('codigo').addEventListener('input', () => {
+  $('codigo').value = $('codigo').value.replace(/[^A-Za-z0-9-]/g, '').toUpperCase();
+});
+
+// validacion de descripcion, marca
+['descripcion', 'marca'].forEach((id) => $(id).addEventListener('input', () => {
+  $(id).value = $(id).value.replace(/[^\p{L}\d .,&#'()\/-]/gu, '');
+}));
+
+// validacion de unidad 
+$('unidad').addEventListener('input', () => {
+  $('unidad').value = $('unidad').value.replace(/[^\p{L} .]/gu, '');
+});
+
+// validacion de precio 
+$('comentario').addEventListener('input', () => {
+  $('comentario').value = $('comentario').value.replace(/[^\p{L}\d\s.,;:!?¿¡()'"%&#\/@+-]/gu, '');
+});
+
+// validacion de costo y precio
+['costo', 'precio'].forEach((id) => $(id).addEventListener('keydown', (e) => {
+  if (['e', 'E', '+', '-'].includes(e.key)) e.preventDefault();   // sin notación científica ni negativos
+}));
