@@ -4,7 +4,7 @@
 $host = "sql313.infinityfree.com";
 $bd = "if0_43540368_INV_MANAGE";
 $usuario = "if0_43540368";
-$password = "RzsJrnxEJ9yB2A";
+$password = "qMzqBVkCVlJyn";
 
 
 /*
